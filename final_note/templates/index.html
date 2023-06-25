@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+
+    <div class="col-lg-7 text-start text-light">
+      <!-- respuesta de calculo de nota  -->
+      {% if mensaje %}
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1 class="display-1 fw-bold lh-1 text-light mb-3 rta">{{nota_final}}{{ emogi|safe }}</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <h1 class="col-lg-10 fs-1">
+                {{mensaje}}
+              </h1>
+            </div>
+          </div>
+        </div>
+        <!-- mensaje de errorr de rango de notas   -->
+        {% elif mensaje_error%}
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1 class="display-1 fw-bold lh-1 text-light mb-3 rta">&#128545;</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <h1 class="col-lg-10 fs-1">
+                {{mensaje_error}}
+              </h1>
+            </div>
+          </div>
+        </div>
+        <!-- salida del index  -->
+        {% else %}
+        <h1 class="display-4 fw-bold lh-1 text-light mb-3">¿Llevas el semestre arrastrado?</h1>
+        <p class="col-lg-10 fs-4">
+          Si llevas una materia <span class="text-danger font-weight-bold">perdida</span>&#128531;, ingresa tu nota del primer y segundo corte para ver qué milagro tienes que hacer para ganar en el tercero, y si vas bien, pues bien por ti.&#128077;
+        </p>
+      {% endif %}
+    
+    </div>
+
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form action="{% url 'final_note:calcular' %}" method="post" class="p-4 p-md-5 rounded-3  form_notas">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+          <input type="number" name="nota_c1" class="form-control bg-secondary border-0" id="floatingInput" placeholder="2.4" step="0.01" required>
+          <label class="text-light">Corte 1</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" name="nota_c2" class="form-control bg-secondary border-0" id="floatingPassword" placeholder="4.5" step="0.01" required>
+          <label class="text-light">Corte 2</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-success" type="submit">Calcular&#128591;</button>
+        <hr class="my-3 border-light">
+        <small class="text-light ">Ingrese las notas en el rango valido de 0.0 a 5.0.</small>
+      </form>
+    </div>
+  </div>
+</div>
+  
+
+{% endblock %}

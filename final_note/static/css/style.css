@@ -1,0 +1,35 @@
+body{
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+/* estilos del scroll */
+body::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: linear-gradient(to right, #243B55, #141E30);
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #49f260; /* Color del scroll */
+    border-radius: 6px;
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: #7ff895; /* Color del scroll al pasar el mouse */
+  }
+  
+/* formulario de notas */
+.form_notas{
+    background-color: rgba(0, 0, 0, 0.3); /* Ajusta el valor "0.5" para cambiar la opacidad */
+}
+
+
+/*resultados de nota y emogis*/
+.rta{
+    font-size: 76px;
+}
