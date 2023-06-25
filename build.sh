@@ -8,4 +8,4 @@ pip install -r requirements.txt
 
 python manage.py collectstatic --no-input
 python manage.py migrate
-python manage.py createsuperuser
+python manage.py createsuperuser --username=cdap --email=oruz2019@gmail.com --password=cdap0901
